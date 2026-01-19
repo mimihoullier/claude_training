@@ -436,6 +436,235 @@
         .kpi-card:nth-child(3) { animation-delay: 0.2s; }
         .kpi-card:nth-child(4) { animation-delay: 0.25s; }
         .kpi-card:nth-child(5) { animation-delay: 0.3s; }
+
+        /* Raw Data Button */
+        .raw-data-btn {
+            padding: 10px 20px;
+            background: linear-gradient(135deg, var(--gray-700) 0%, var(--gray-800) 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .raw-data-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal {
+            background: white;
+            border-radius: 16px;
+            box-shadow: var(--shadow-lg);
+            width: 90%;
+            max-width: 1200px;
+            max-height: 85vh;
+            display: flex;
+            flex-direction: column;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-overlay.active .modal {
+            transform: scale(1);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 24px;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .modal-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--gray-900);
+        }
+
+        .modal-close {
+            width: 36px;
+            height: 36px;
+            border: none;
+            background: var(--gray-100);
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 20px;
+            color: var(--gray-600);
+            transition: all 0.2s ease;
+        }
+
+        .modal-close:hover {
+            background: var(--gray-200);
+            color: var(--gray-900);
+        }
+
+        .modal-body {
+            padding: 24px;
+            overflow: auto;
+            flex: 1;
+        }
+
+        .modal-controls {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+
+        .modal-controls select {
+            padding: 8px 12px;
+            border: 1px solid var(--gray-200);
+            border-radius: 8px;
+            font-size: 14px;
+            background: var(--gray-50);
+        }
+
+        .modal-controls button {
+            padding: 8px 16px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .modal-controls button:hover {
+            background: var(--primary-dark);
+        }
+
+        .modal-controls button.secondary {
+            background: var(--gray-200);
+            color: var(--gray-700);
+        }
+
+        .modal-controls button.secondary:hover {
+            background: var(--gray-300);
+        }
+
+        .data-table-container {
+            overflow: auto;
+            max-height: 500px;
+            border: 1px solid var(--gray-200);
+            border-radius: 12px;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+
+        .data-table th,
+        .data-table td {
+            padding: 10px 14px;
+            text-align: right;
+            border-bottom: 1px solid var(--gray-100);
+            white-space: nowrap;
+        }
+
+        .data-table th {
+            background: var(--gray-50);
+            font-weight: 600;
+            color: var(--gray-600);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .data-table th:first-child,
+        .data-table td:first-child {
+            text-align: left;
+            position: sticky;
+            left: 0;
+            background: white;
+            z-index: 5;
+        }
+
+        .data-table th:first-child {
+            z-index: 15;
+            background: var(--gray-50);
+        }
+
+        .data-table tr:hover td {
+            background: var(--gray-50);
+        }
+
+        .data-table tr:hover td:first-child {
+            background: var(--gray-100);
+        }
+
+        .json-view {
+            background: var(--gray-900);
+            color: #e5e7eb;
+            padding: 20px;
+            border-radius: 12px;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 12px;
+            line-height: 1.6;
+            overflow: auto;
+            max-height: 500px;
+        }
+
+        .json-key { color: #93c5fd; }
+        .json-string { color: #86efac; }
+        .json-number { color: #fcd34d; }
+
+        .data-stats {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 16px;
+            padding: 16px;
+            background: var(--gray-50);
+            border-radius: 12px;
+        }
+
+        .data-stat {
+            text-align: center;
+        }
+
+        .data-stat-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .data-stat-label {
+            font-size: 12px;
+            color: var(--gray-500);
+        }
     </style>
 </head>
 <body>
@@ -443,7 +672,12 @@
         <!-- Header -->
         <div class="header">
             <h1>サブスクリプション ダッシュボード</h1>
-            <span class="last-updated" id="lastUpdated"></span>
+            <div style="display: flex; align-items: center; gap: 16px;">
+                <span class="last-updated" id="lastUpdated"></span>
+                <button class="raw-data-btn" id="openRawDataBtn">
+                    <span>📋</span> 生データ表示
+                </button>
+            </div>
         </div>
 
         <!-- Filters -->
@@ -562,68 +796,152 @@
         </div>
     </div>
 
+    <!-- Raw Data Modal -->
+    <div class="modal-overlay" id="rawDataModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 class="modal-title">生データ表示</h2>
+                <button class="modal-close" id="closeModalBtn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="data-stats" id="dataStats"></div>
+                <div class="modal-controls">
+                    <select id="dataViewType">
+                        <option value="table">テーブル表示</option>
+                        <option value="json">JSON表示</option>
+                    </select>
+                    <select id="dataExportRange">
+                        <option value="filtered">フィルター適用データ</option>
+                        <option value="all">全データ (400日分)</option>
+                    </select>
+                    <button id="copyDataBtn">📋 コピー</button>
+                    <button id="downloadCsvBtn" class="secondary">⬇️ CSV</button>
+                    <button id="downloadJsonBtn" class="secondary">⬇️ JSON</button>
+                </div>
+                <div id="dataContent"></div>
+            </div>
+        </div>
+    </div>
+
     <script>
         // ===== Data Generation =====
         class DataGenerator {
             constructor() {
                 this.baseDate = new Date();
-                this.seed = 12345;
+                // Random seed based on current timestamp - data changes on each load
+                this.seed = Date.now() % 1000000;
+                console.log(`🎲 Data seed: ${this.seed}`);
             }
 
-            // Seeded random for reproducibility
+            // Seeded random with better distribution
             random() {
-                this.seed = (this.seed * 9301 + 49297) % 233280;
-                return this.seed / 233280;
+                this.seed = (this.seed * 1103515245 + 12345) & 0x7fffffff;
+                return this.seed / 0x7fffffff;
+            }
+
+            // Gaussian random for more natural variation
+            gaussianRandom(mean = 0, stdev = 1) {
+                const u = 1 - this.random();
+                const v = this.random();
+                const z = Math.sqrt(-2.0 * Math.log(u)) * Math.cos(2.0 * Math.PI * v);
+                return z * stdev + mean;
             }
 
             // Generate realistic subscription data with trends and spikes
             generateData(days) {
                 const data = [];
-                let iosMonthlyActive = 8500;
-                let iosYearlyActive = 3200;
-                let androidMonthlyActive = 6800;
-                let androidYearlyActive = 2400;
+
+                // Randomize initial values with variance
+                let iosMonthlyActive = Math.round(7000 + this.random() * 4000);
+                let iosYearlyActive = Math.round(2500 + this.random() * 1500);
+                let androidMonthlyActive = Math.round(5500 + this.random() * 3000);
+                let androidYearlyActive = Math.round(1800 + this.random() * 1200);
 
                 const monthlyPrice = 980;
                 const yearlyPrice = 9800;
+
+                // Random growth trend (0.02% - 0.08% daily)
+                const baseTrendRate = 0.0002 + this.random() * 0.0006;
+
+                // Random seasonal amplitude
+                const seasonalAmplitude = 0.05 + this.random() * 0.1;
+
+                // Randomize when spikes occur (campaign days)
+                const campaignDays = [];
+                const numCampaigns = Math.floor(2 + this.random() * 5);
+                for (let c = 0; c < numCampaigns; c++) {
+                    campaignDays.push(Math.floor(this.random() * days));
+                }
+
+                // Random "bad period" (technical issues, competitor launch, etc.)
+                const badPeriodStart = Math.floor(this.random() * (days - 30));
+                const badPeriodLength = Math.floor(5 + this.random() * 10);
 
                 for (let i = days - 1; i >= 0; i--) {
                     const date = new Date(this.baseDate);
                     date.setDate(date.getDate() - i);
 
-                    // Day of week effect (weekends lower)
+                    // Day of week effect (weekends lower, with variance)
                     const dayOfWeek = date.getDay();
-                    const weekendFactor = (dayOfWeek === 0 || dayOfWeek === 6) ? 0.7 : 1.0;
+                    const weekendBase = (dayOfWeek === 0 || dayOfWeek === 6) ? 0.65 : 1.0;
+                    const weekendFactor = weekendBase + this.gaussianRandom(0, 0.08);
 
-                    // Seasonal trend (slight growth)
-                    const trendFactor = 1 + (days - i) * 0.0005;
+                    // Seasonal trend with sine wave
+                    const dayOfYear = Math.floor((date - new Date(date.getFullYear(), 0, 0)) / (1000 * 60 * 60 * 24));
+                    const seasonalFactor = 1 + Math.sin(dayOfYear / 365 * Math.PI * 2) * seasonalAmplitude;
 
-                    // Random spikes (marketing campaigns, etc.)
-                    const spikeChance = this.random();
-                    const spikeFactor = spikeChance > 0.95 ? 2.5 : (spikeChance > 0.9 ? 1.8 : 1.0);
+                    // Growth trend with some randomness
+                    const trendFactor = 1 + (days - i) * baseTrendRate * (0.8 + this.random() * 0.4);
 
-                    // Generate daily new subscriptions
-                    const iosMonthlyNew = Math.round((35 + this.random() * 25) * weekendFactor * trendFactor * spikeFactor);
-                    const iosYearlyNew = Math.round((8 + this.random() * 7) * weekendFactor * trendFactor * spikeFactor);
-                    const androidMonthlyNew = Math.round((28 + this.random() * 20) * weekendFactor * trendFactor * spikeFactor);
-                    const androidYearlyNew = Math.round((6 + this.random() * 5) * weekendFactor * trendFactor * spikeFactor);
+                    // Marketing campaign spikes
+                    const dayIndex = days - 1 - i;
+                    let spikeFactor = 1.0;
+                    for (const campaignDay of campaignDays) {
+                        const distFromCampaign = Math.abs(dayIndex - campaignDay);
+                        if (distFromCampaign <= 2) {
+                            spikeFactor = Math.max(spikeFactor, 2.0 + this.random() * 1.5 - distFromCampaign * 0.3);
+                        }
+                    }
 
-                    // Churn (slightly lower than new for growth)
-                    const churnFactor = 0.85 + this.random() * 0.25;
-                    const iosMonthlyChurn = Math.round(iosMonthlyNew * churnFactor * 0.9);
-                    const iosYearlyChurn = Math.round(iosYearlyNew * churnFactor * 0.4);
-                    const androidMonthlyChurn = Math.round(androidMonthlyNew * churnFactor * 0.95);
-                    const androidYearlyChurn = Math.round(androidYearlyNew * churnFactor * 0.45);
+                    // Bad period effect
+                    let badPeriodFactor = 1.0;
+                    if (dayIndex >= badPeriodStart && dayIndex < badPeriodStart + badPeriodLength) {
+                        badPeriodFactor = 0.6 + this.random() * 0.2;
+                    }
+
+                    // Random daily noise
+                    const dailyNoise = 0.85 + this.random() * 0.3;
+
+                    // Combined factor
+                    const combinedFactor = weekendFactor * seasonalFactor * trendFactor * spikeFactor * badPeriodFactor * dailyNoise;
+
+                    // Generate daily new subscriptions with Gaussian variation
+                    const iosMonthlyNew = Math.max(0, Math.round(this.gaussianRandom(40, 12) * combinedFactor));
+                    const iosYearlyNew = Math.max(0, Math.round(this.gaussianRandom(10, 4) * combinedFactor));
+                    const androidMonthlyNew = Math.max(0, Math.round(this.gaussianRandom(32, 10) * combinedFactor));
+                    const androidYearlyNew = Math.max(0, Math.round(this.gaussianRandom(7, 3) * combinedFactor));
+
+                    // Churn with variance (monthly has higher churn than yearly)
+                    const baseChurnRate = 0.75 + this.random() * 0.3;
+                    const churnBadPeriod = badPeriodFactor < 1 ? 1.3 : 1.0;
+                    const iosMonthlyChurn = Math.max(0, Math.round(iosMonthlyNew * baseChurnRate * 0.9 * churnBadPeriod));
+                    const iosYearlyChurn = Math.max(0, Math.round(iosYearlyNew * baseChurnRate * 0.35));
+                    const androidMonthlyChurn = Math.max(0, Math.round(androidMonthlyNew * baseChurnRate * 0.95 * churnBadPeriod));
+                    const androidYearlyChurn = Math.max(0, Math.round(androidYearlyNew * baseChurnRate * 0.4));
 
                     // Update active counts
-                    iosMonthlyActive += iosMonthlyNew - iosMonthlyChurn;
-                    iosYearlyActive += iosYearlyNew - iosYearlyChurn;
-                    androidMonthlyActive += androidMonthlyNew - androidMonthlyChurn;
-                    androidYearlyActive += androidYearlyNew - androidYearlyChurn;
+                    iosMonthlyActive = Math.max(1000, iosMonthlyActive + iosMonthlyNew - iosMonthlyChurn);
+                    iosYearlyActive = Math.max(500, iosYearlyActive + iosYearlyNew - iosYearlyChurn);
+                    androidMonthlyActive = Math.max(800, androidMonthlyActive + androidMonthlyNew - androidMonthlyChurn);
+                    androidYearlyActive = Math.max(400, androidYearlyActive + androidYearlyNew - androidYearlyChurn);
 
-                    // Trial conversion (varies between 35-65%)
-                    const iosTrialConversion = 0.45 + this.random() * 0.15 + (spikeFactor > 1 ? 0.05 : 0);
-                    const androidTrialConversion = 0.40 + this.random() * 0.15 + (spikeFactor > 1 ? 0.05 : 0);
+                    // Trial conversion with variance and spike bonus
+                    const spikeBonus = spikeFactor > 1.5 ? 0.08 : 0;
+                    const badPeriodPenalty = badPeriodFactor < 1 ? -0.1 : 0;
+                    const iosTrialConversion = Math.min(0.85, Math.max(0.25,
+                        this.gaussianRandom(0.52, 0.08) + spikeBonus + badPeriodPenalty));
+                    const androidTrialConversion = Math.min(0.80, Math.max(0.20,
+                        this.gaussianRandom(0.47, 0.09) + spikeBonus + badPeriodPenalty));
 
                     // Calculate MRR
                     const mrr = (iosMonthlyActive + androidMonthlyActive) * monthlyPrice +
@@ -643,7 +961,7 @@
                                 active: iosYearlyActive,
                                 new: iosYearlyNew,
                                 churn: iosYearlyChurn,
-                                trialConversion: iosTrialConversion + 0.1
+                                trialConversion: Math.min(0.90, iosTrialConversion + 0.08 + this.random() * 0.05)
                             }
                         },
                         android: {
@@ -657,7 +975,7 @@
                                 active: androidYearlyActive,
                                 new: androidYearlyNew,
                                 churn: androidYearlyChurn,
-                                trialConversion: androidTrialConversion + 0.08
+                                trialConversion: Math.min(0.88, androidTrialConversion + 0.06 + this.random() * 0.04)
                             }
                         },
                         mrr: mrr
@@ -1084,11 +1402,210 @@
                 document.getElementById('lastUpdated').textContent =
                     `最終更新: ${now.getFullYear()}/${now.getMonth() + 1}/${now.getDate()} ${now.getHours()}:${String(now.getMinutes()).padStart(2, '0')}`;
             }
+
+            // ===== Raw Data Viewer =====
+            initRawDataViewer() {
+                const modal = document.getElementById('rawDataModal');
+                const openBtn = document.getElementById('openRawDataBtn');
+                const closeBtn = document.getElementById('closeModalBtn');
+                const viewType = document.getElementById('dataViewType');
+                const exportRange = document.getElementById('dataExportRange');
+                const copyBtn = document.getElementById('copyDataBtn');
+                const csvBtn = document.getElementById('downloadCsvBtn');
+                const jsonBtn = document.getElementById('downloadJsonBtn');
+
+                openBtn.addEventListener('click', () => {
+                    modal.classList.add('active');
+                    this.updateRawDataView();
+                });
+
+                closeBtn.addEventListener('click', () => {
+                    modal.classList.remove('active');
+                });
+
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) {
+                        modal.classList.remove('active');
+                    }
+                });
+
+                viewType.addEventListener('change', () => this.updateRawDataView());
+                exportRange.addEventListener('change', () => this.updateRawDataView());
+
+                copyBtn.addEventListener('click', () => this.copyData());
+                csvBtn.addEventListener('click', () => this.downloadCSV());
+                jsonBtn.addEventListener('click', () => this.downloadJSON());
+            }
+
+            getRawDataForExport() {
+                const range = document.getElementById('dataExportRange').value;
+                const data = range === 'all' ? this.rawData : this.rawData.slice(-this.filters.period);
+
+                return data.map(day => {
+                    const platforms = this.filters.platform === 'all' ? ['ios', 'android'] : [this.filters.platform];
+                    const plans = this.filters.plan === 'all' ? ['monthly', 'yearly'] : [this.filters.plan];
+
+                    let totalActive = 0, totalNew = 0, totalChurn = 0, trialSum = 0, trialCount = 0;
+
+                    platforms.forEach(platform => {
+                        plans.forEach(plan => {
+                            const d = day[platform][plan];
+                            totalActive += d.active;
+                            totalNew += d.new;
+                            totalChurn += d.churn;
+                            trialSum += d.trialConversion;
+                            trialCount++;
+                        });
+                    });
+
+                    return {
+                        date: day.date,
+                        active: totalActive,
+                        new: totalNew,
+                        churn: totalChurn,
+                        net: totalNew - totalChurn,
+                        trialConversion: (trialSum / trialCount * 100).toFixed(1),
+                        mrr: this.calculateMRR(day, platforms, plans),
+                        ios_monthly_active: day.ios.monthly.active,
+                        ios_monthly_new: day.ios.monthly.new,
+                        ios_monthly_churn: day.ios.monthly.churn,
+                        ios_yearly_active: day.ios.yearly.active,
+                        ios_yearly_new: day.ios.yearly.new,
+                        ios_yearly_churn: day.ios.yearly.churn,
+                        android_monthly_active: day.android.monthly.active,
+                        android_monthly_new: day.android.monthly.new,
+                        android_monthly_churn: day.android.monthly.churn,
+                        android_yearly_active: day.android.yearly.active,
+                        android_yearly_new: day.android.yearly.new,
+                        android_yearly_churn: day.android.yearly.churn
+                    };
+                });
+            }
+
+            updateRawDataView() {
+                const viewType = document.getElementById('dataViewType').value;
+                const data = this.getRawDataForExport();
+                const contentEl = document.getElementById('dataContent');
+                const statsEl = document.getElementById('dataStats');
+
+                // Update stats
+                const totalNew = data.reduce((sum, d) => sum + d.new, 0);
+                const totalChurn = data.reduce((sum, d) => sum + d.churn, 0);
+                const latestActive = data[data.length - 1]?.active || 0;
+                const latestMRR = data[data.length - 1]?.mrr || 0;
+
+                statsEl.innerHTML = `
+                    <div class="data-stat">
+                        <div class="data-stat-value">${data.length}</div>
+                        <div class="data-stat-label">レコード数</div>
+                    </div>
+                    <div class="data-stat">
+                        <div class="data-stat-value">${latestActive.toLocaleString()}</div>
+                        <div class="data-stat-label">最新有効数</div>
+                    </div>
+                    <div class="data-stat">
+                        <div class="data-stat-value">${totalNew.toLocaleString()}</div>
+                        <div class="data-stat-label">合計新規</div>
+                    </div>
+                    <div class="data-stat">
+                        <div class="data-stat-value">¥${(latestMRR / 1000000).toFixed(2)}M</div>
+                        <div class="data-stat-label">最新MRR</div>
+                    </div>
+                `;
+
+                if (viewType === 'table') {
+                    contentEl.innerHTML = this.renderTable(data);
+                } else {
+                    contentEl.innerHTML = this.renderJSON(data);
+                }
+            }
+
+            renderTable(data) {
+                const headers = ['日付', '有効', '新規', '解約', '純増', '転換率', 'MRR'];
+
+                let html = '<div class="data-table-container"><table class="data-table"><thead><tr>';
+                headers.forEach(h => html += `<th>${h}</th>`);
+                html += '</tr></thead><tbody>';
+
+                data.slice().reverse().forEach(row => {
+                    html += '<tr>';
+                    html += `<td>${row.date}</td>`;
+                    html += `<td>${row.active.toLocaleString()}</td>`;
+                    html += `<td style="color: #10b981;">+${row.new.toLocaleString()}</td>`;
+                    html += `<td style="color: #ef4444;">-${row.churn.toLocaleString()}</td>`;
+                    html += `<td style="color: ${row.net >= 0 ? '#10b981' : '#ef4444'};">${row.net >= 0 ? '+' : ''}${row.net.toLocaleString()}</td>`;
+                    html += `<td>${row.trialConversion}%</td>`;
+                    html += `<td>¥${(row.mrr / 1000000).toFixed(2)}M</td>`;
+                    html += '</tr>';
+                });
+
+                html += '</tbody></table></div>';
+                return html;
+            }
+
+            renderJSON(data) {
+                const json = JSON.stringify(data, null, 2);
+                const highlighted = json
+                    .replace(/"([^"]+)":/g, '<span class="json-key">"$1"</span>:')
+                    .replace(/: "([^"]+)"/g, ': <span class="json-string">"$1"</span>')
+                    .replace(/: (\d+\.?\d*)/g, ': <span class="json-number">$1</span>');
+
+                return `<pre class="json-view">${highlighted}</pre>`;
+            }
+
+            copyData() {
+                const data = this.getRawDataForExport();
+                const viewType = document.getElementById('dataViewType').value;
+                let text;
+
+                if (viewType === 'table') {
+                    const headers = ['date', 'active', 'new', 'churn', 'net', 'trialConversion', 'mrr'];
+                    const rows = data.map(row => headers.map(h => row[h]).join('\t'));
+                    text = headers.join('\t') + '\n' + rows.join('\n');
+                } else {
+                    text = JSON.stringify(data, null, 2);
+                }
+
+                navigator.clipboard.writeText(text).then(() => {
+                    const btn = document.getElementById('copyDataBtn');
+                    const original = btn.textContent;
+                    btn.textContent = '✓ コピー完了';
+                    setTimeout(() => btn.textContent = original, 2000);
+                });
+            }
+
+            downloadCSV() {
+                const data = this.getRawDataForExport();
+                const headers = Object.keys(data[0]);
+                const csv = [
+                    headers.join(','),
+                    ...data.map(row => headers.map(h => row[h]).join(','))
+                ].join('\n');
+
+                this.downloadFile(csv, 'subscription_data.csv', 'text/csv');
+            }
+
+            downloadJSON() {
+                const data = this.getRawDataForExport();
+                const json = JSON.stringify(data, null, 2);
+                this.downloadFile(json, 'subscription_data.json', 'application/json');
+            }
+
+            downloadFile(content, filename, type) {
+                const blob = new Blob([content], { type });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = filename;
+                a.click();
+                URL.revokeObjectURL(url);
+            }
         }
 
         // Initialize dashboard
         document.addEventListener('DOMContentLoaded', () => {
-            new Dashboard();
+            const dashboard = new Dashboard();
+            dashboard.initRawDataViewer();
         });
     </script>
 </body>
